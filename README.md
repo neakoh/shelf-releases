@@ -5,7 +5,7 @@ Unofficial builds of Shelf. Each release carries the installable zip, the update
 ## Install
 
 ```
-curl -fsSL https://github.com/neakoh/shelf-releases/releases/latest/download/Shelf-macos-x64.zip -o /tmp/Shelf.zip && ditto -x -k /tmp/Shelf.zip /Applications && open /Applications/Shelf.app
+curl -fsSL https://github.com/neakoh/shelf-releases/releases/latest/download/Shelf-macos-x64.zip -o /tmp/Shelf.zip && rm -rf /Applications/Shelf.app && ditto -x -k /tmp/Shelf.zip /Applications && xattr -dr com.apple.quarantine /Applications/Shelf.app; open /Applications/Shelf.app
 ```
 
-Downloaded with a browser instead, the zip is quarantined and macOS refuses the app once: `xattr -dr com.apple.quarantine ~/Downloads/Shelf.app`, then move it to Applications.
+If macOS still says it could not verify the app is free of malware, it is a quarantined copy: run `xattr -dr com.apple.quarantine /Applications/Shelf.app` and open it again.
